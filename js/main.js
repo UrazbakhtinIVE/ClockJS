@@ -1,12 +1,28 @@
-let btn = document.querySelector('button');
+var clock = document.getElementById('clock')
+
+function timeClock() {
+    var time = new Date();
+    var h = (time.getHours() % 12).toString();
+    var m = time.getMinutes().toString();
+    var s = time.getSeconds().toString();
+
+    if (h.length < 2) {
+        h = '0' + h
+    }
 
 
-function random(number) {
-    return Math.floor(Math.random() * (number + 2));
+    if (m.length < 2) {
+        m = '0' + m
+    }
+
+    if (s.length < 2) {
+        s = '0' + s
+    }
+    var clockString = h + ':' + m + ':' + s;
+
+    clock.textContent = clockString;
+
+    // document.body.style.backgroundColor
 }
 
-
-btn.onclick = function() {
-    const rndCol = 'rgb(' + random(255) + ', ' + random(255) + ' , ' + random(255) + ')';
-    document.body.style.backgroundColor = rndCol;
-}
+setInterval(timeClock, 1000);
